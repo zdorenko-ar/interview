@@ -9,8 +9,6 @@ type TData = {
 
 
 export const TestPage = (): React.ReactElement => {
-    const [getI, setI] = useState<TData | null>(null)
-
     const data: Array<TData> = [
         { name: 'foo', age: 5 },
         { name: 'bar', age: 9 },
@@ -18,6 +16,12 @@ export const TestPage = (): React.ReactElement => {
     ]
 
     const [getD, setD] = useState<Array<TData>>(data)
+
+    if (getD.length > 15) {
+        return null
+    }
+
+    const [getI, setI] = useState<TData | null>(null)
 
     const rowClick = (rowData: TData) => {
         setI(rowData)
@@ -32,6 +36,10 @@ export const TestPage = (): React.ReactElement => {
 
     return (
         <>
+            <h1>Вводная страница</h1>
+
+            <h1>Возврастная таблица</h1>
+            
             <TestPageStyled>
                 <table width="100%">
                     {getD.map((item) => <Row {...item} onClick={rowClick} />)}
@@ -46,11 +54,11 @@ export const TestPage = (): React.ReactElement => {
                 Добавить строку
             </button>
 
-            <div>
-                Num of all rows: {data.length}
+            <h4>
+                <h3>Num of all rows: {data.length}</h3>
                 <br />
-                Current row data: {JSON.stringify(getI)}
-            </div>
+                <h3>Current row data: {JSON.stringify(getI)}</h3>
+            </h4>
         </>
     );
 };
