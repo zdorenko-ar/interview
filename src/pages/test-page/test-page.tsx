@@ -1,9 +1,10 @@
 import React from 'react';
+import { TestPageStyled } from './test-page.style';
 
 export const TestPage = (): React.ReactElement => {
     return (
-        <div>
+        <TestPageStyled>
             Hi
-        </div>
+        </TestPageStyled>
     );
 };
